@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 
 import { signInSchema } from './sign-in-schema'
@@ -35,21 +36,19 @@ export function SignInForm() {
   return (
     <Form {...form}>
       <form
-        className="flex h-auto w-full flex-col gap-4"
+        className="flex h-auto w-80 flex-col justify-items-center gap-4"
         onSubmit={form.handleSubmit(onSubmit)}
       >
+        <FormLabel className="block w-full text-center text-white">
+          Acesse sua conta
+        </FormLabel>
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email:</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Informe seu email:"
-                  type="text"
-                  {...field}
-                />
+                <Input placeholder="E-mail" type="text" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -61,13 +60,8 @@ export function SignInForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Senha:</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Informe sua senha:"
-                  type="password"
-                  {...field}
-                />
+                <Input placeholder="Senha" type="password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -81,8 +75,8 @@ export function SignInForm() {
           Esqueceu sua senha?
         </Link>
 
-        <Button className="" type="submit">
-          Entrar
+        <Button className="bg-[#64E9FF]" type="submit">
+          Acessar
         </Button>
 
         <div className="flex items-center gap-4">
