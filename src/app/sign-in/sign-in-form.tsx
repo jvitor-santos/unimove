@@ -15,7 +15,6 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 
 import { signInSchema } from './sign-in-schema'
@@ -36,7 +35,7 @@ export function SignInForm() {
   return (
     <Form {...form}>
       <form
-        className="flex h-auto w-80 flex-col justify-items-center gap-4"
+        className="flex h-auto w-80 flex-col justify-center justify-items-center gap-4"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormLabel className="block w-full text-center text-white">
@@ -68,26 +67,23 @@ export function SignInForm() {
           )}
         />
 
-        <Link
-          className="ml-auto text-xs text-muted-foreground hover:underline"
-          href={'/reset-password'}
-        >
-          Esqueceu sua senha?
-        </Link>
-
         <Button className="bg-[#64E9FF]" type="submit">
           Acessar
         </Button>
 
         <div className="flex items-center gap-4">
           <Separator className="w-full shrink" />
-          <span className="min-w-max text-xs text-muted-foreground">
-            Não tem uma conta?
+          <span className="min-w-max text-xs text-white">
+            Ainda não tem acesso?
           </span>
           <Separator className="w-full shrink" />
         </div>
 
-        <Button className="w-full" type="button" variant="outline" asChild>
+        <Button
+          className="w-full border-2 border-[#64E9FF] bg-transparent text-[#64E9FF]"
+          type="button"
+          asChild
+        >
           <Link href={'sign-up'}>Criar conta</Link>
         </Button>
       </form>
