@@ -8,9 +8,9 @@ export default function Home() {
       <Header />
 
       <div className="flex w-full max-w-5xl flex-1 gap-4 px-2 py-4">
-        <Menus />
+        {/* <Menus /> */}
 
-        <Posts />
+        {/* <Posts /> */}
       </div>
     </div>
   )

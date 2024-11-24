@@ -67,7 +67,11 @@ export function SignInForm() {
           )}
         />
 
-        <Button className="bg-[#64E9FF]" type="submit">
+        <Button
+          className="bg-[#64E9FF] text-white"
+          variant={'outline'}
+          type="submit"
+        >
           Acessar
         </Button>
 

@@ -1,20 +1,24 @@
 'use client'
 
-import { useTheme } from 'next-themes'
+import { LogOut } from 'lucide-react'
 
-import { Logo } from '@/assets/Logo'
-
-import { HeaderDropdown } from './header-dropdown'
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 
 export function Header() {
-  const { theme } = useTheme()
-
   return (
     <header className="flex h-auto w-full items-center justify-center border-b border-b-muted bg-card shadow-sm">
       <div className="flex h-auto w-full max-w-5xl items-center justify-between p-4">
-        <Logo theme={theme as 'dark' | 'light'} />
+        <div className="flex">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          </Avatar>
+          <span className="text-black">Olá Aluno</span>
+        </div>
 
-        <HeaderDropdown />
+        <Button className="bg-transparent">
+          <LogOut className="mr-2 size-4 text-muted-foreground" />
+        </Button>
       </div>
     </header>
   )

@@ -3,7 +3,7 @@ import { ResetPasswordForm } from './reset-password-form'
 
 export default function ResetPassword() {
   return (
-    <div className="flex size-full min-h-dvh items-center justify-center">
+    <div className="flex size-full min-h-dvh items-center justify-center bg-primary">
       <ResetPasswordCard>
         <ResetPasswordForm />
       </ResetPasswordCard>

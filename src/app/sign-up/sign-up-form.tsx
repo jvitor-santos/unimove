@@ -14,6 +14,13 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 import { signUpSchema } from './sign-up-schema'
 
@@ -129,6 +136,35 @@ export function SignUpForm() {
                   type="text"
                   {...field}
                 />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="accountType"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  {...field}
+                >
+                  <SelectTrigger>
+                    <SelectValue
+                      placeholder="Selecione o tipo de conta"
+                      className="text-white"
+                    />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="driver">Motorista</SelectItem>
+                    <SelectItem value="passenger">Aluno</SelectItem>
+                    <SelectItem value="admin">Administrador</SelectItem>
+                  </SelectContent>
+                </Select>
               </FormControl>
               <FormMessage />
             </FormItem>
