@@ -3,39 +3,26 @@
 import { CircleUser, House, Map } from 'lucide-react'
 import Link from 'next/link'
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
+import { Button } from '../ui/button'
 
 export function Navigation() {
   return (
-    <footer className="flex h-[96px] w-full bg-[#0D274D]">
-      <NavigationMenu style={{ listStyleType: 'none' }}>
-        <NavigationMenuItem>
-          <Link href="/">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <House className="mr-2 size-4 text-white" />
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/sign-in">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <Map className="mr-2 size-4 text-white" />
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link href="/sign-up">
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <CircleUser className="mr-2 size-4 text-white" />
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
-      </NavigationMenu>
+    <footer className="flex h-[96px] w-full items-center justify-center gap-8 bg-[#0D274D]">
+      <Button className="bg-transparent">
+        <Link href="/">
+          <House className="mr-2 text-white" size={36} />
+        </Link>
+      </Button>
+      <Button className="bg-transparent">
+        <Link href="/sign-in">
+          <Map className="mr-2 text-white" size={36} />
+        </Link>
+      </Button>
+      <Button className="bg-transparent">
+        <Link href="/sign-up">
+          <CircleUser className="mr-2 text-white" size={36} />
+        </Link>
+      </Button>
     </footer>
   )
 }
