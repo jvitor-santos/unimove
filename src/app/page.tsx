@@ -1,9 +1,15 @@
+'use client'
+
+import { useState } from 'react'
+
 import { Header } from '@/components/header'
 import { Navigation } from '@/components/navigation'
 import { Button } from '@/components/ui/button'
 
 export default function Home() {
-  const typeAccount = 'Driver'
+  type AccountType = 'Aluno' | 'Manager' | 'Driver'
+  const [typeAccount, setTypeAccount] = useState<AccountType>('Aluno')
+
   return (
     <div className="flex size-full min-h-dvh flex-col items-center bg-[#2550F8]">
       <Header />
