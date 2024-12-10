@@ -37,7 +37,7 @@ export function SignInForm() {
     await signInService.signIn(values).then(async (res) => {
       const { token, uid, emailVerified } = res as InterfaceSignInResponse
 
-      console.log('Pedir para verificar o email!', emailVerified)
+      console.log('Uid:', uid)
     })
   }
 

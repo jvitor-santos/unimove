@@ -1,6 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { doc, setDoc } from 'firebase/firestore'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -21,10 +22,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { db } from '@/lib/firebase'
+import SignUpService, {
+  InterfaceSignUpResponse,
+} from '@/services/firebase/auth/sign-up'
 
 import { signUpSchema } from './sign-up-schema'
 
 export function SignUpForm() {
+  const signUpService = new SignUpService()
   const form = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -39,7 +45,31 @@ export function SignUpForm() {
   })
 
   async function onSubmit(values: z.infer<typeof signUpSchema>) {
-    console.log(values)
+    try {
+      // Registra o usuário no Firebase Authentication
+      const response = await signUpService.signUp({
+        email: values.email,
+        password: values.password,
+      })
+
+      if ('uid' in response) {
+        const { uid } = response
+
+        // Salva os dados no Firestore
+        await setDoc(doc(db, 'students', uid), {
+          name: values.name,
+          cpf: values.cpf,
+          phone: values.phone,
+          accountType: values.accountType,
+        })
+
+        console.log('Usuário registrado com sucesso no Firestore!')
+      } else {
+        console.error('Erro ao registrar usuário:', response)
+      }
+    } catch (error) {
+      console.error('Erro no registro:', error)
+    }
   }
 
   return (
@@ -161,8 +191,8 @@ export function SignUpForm() {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="driver">Motorista</SelectItem>
-                    <SelectItem value="passenger">Aluno</SelectItem>
-                    <SelectItem value="admin">Administrador</SelectItem>
+                    <SelectItem value="student">Aluno</SelectItem>
+                    <SelectItem value="manager">Administrador</SelectItem>
                   </SelectContent>
                 </Select>
               </FormControl>
