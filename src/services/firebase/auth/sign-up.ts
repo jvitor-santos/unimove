@@ -1,4 +1,5 @@
 import {
+  AuthError,
   createUserWithEmailAndPassword,
   getAuth,
   UserCredential,
@@ -6,38 +7,45 @@ import {
 
 import { app } from '@/lib/firebase'
 
-type TSignUpProps = {
+type InterfaceSignUpProps = {
   email: string
   password: string
 }
 
-type TSignUpResponse = {
-  token: string | null
-  uid: string | null
-  emailVerified: boolean | null
+export type InterfaceSignUpResponse = {
+  token: string
+  uid: string
+  emailVerified: boolean
 }
 
-export const signUp = async ({
-  email,
-  password,
-}: TSignUpProps): Promise<TSignUpResponse> => {
-  const auth = getAuth(app)
+class SignUpService {
+  private auth
 
-  try {
-    const res: UserCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password,
-    )
-    const token = await res?.user?.getIdToken()
-    const { uid, emailVerified } = res?.user
+  constructor() {
+    this.auth = getAuth(app)
+  }
 
-    return { token, uid, emailVerified }
-  } catch (err) {
-    console.error('🚀 ~ signIn ~ err:', err)
+  public async signUp({
+    email,
+    password,
+  }: InterfaceSignUpProps): Promise<InterfaceSignUpResponse | AuthError> {
+    try {
+      const res: UserCredential = await createUserWithEmailAndPassword(
+        this.auth,
+        email,
+        password,
+      )
+      const token = await res?.user?.getIdToken()
+      const { uid, emailVerified } = res?.user
 
-    throw new Error(
-      'Não foi possível criar a conta. Por favor, verifique as informações fornecidas e tente novamente.',
-    )
+      return { token, uid, emailVerified }
+    } catch (err) {
+      const error = err as AuthError
+      console.log('SignUpService error:', error)
+
+      return error
+    }
   }
 }
+
+export default SignUpService

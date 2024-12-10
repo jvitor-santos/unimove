@@ -1,4 +1,5 @@
 import {
+  AuthError,
   getAuth,
   signInWithEmailAndPassword,
   UserCredential,
@@ -6,39 +7,45 @@ import {
 
 import { app } from '@/lib/firebase'
 
-type TSignInProps = {
+type InterfaceSignInProps = {
   email: string
   password: string
 }
 
-type TSignInResponse = {
-  token: string | null
-  uid: string | null
-  emailVerified: boolean | null
+export type InterfaceSignInResponse = {
+  token: string
+  uid: string
+  emailVerified: boolean
 }
 
-export const signIn = async ({
-  email,
-  password,
-}: TSignInProps): Promise<TSignInResponse> => {
-  const auth = getAuth(app)
+class SignInService {
+  private auth
 
-  try {
-    const res: UserCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password,
-    )
+  constructor() {
+    this.auth = getAuth(app)
+  }
 
-    const token = await res?.user?.getIdToken()
-    const { uid, emailVerified } = res?.user
+  public async signIn({
+    email,
+    password,
+  }: InterfaceSignInProps): Promise<InterfaceSignInResponse | AuthError> {
+    try {
+      const res: UserCredential = await signInWithEmailAndPassword(
+        this.auth,
+        email,
+        password,
+      )
+      const token = await res?.user?.getIdToken()
+      const { uid, emailVerified } = res?.user
 
-    return { token, uid, emailVerified }
-  } catch (err) {
-    console.error('🚀 ~ signIn ~ err:', err)
+      return { token, uid, emailVerified }
+    } catch (err) {
+      const error = err as AuthError
+      console.log('SignInService error:', error)
 
-    throw new Error(
-      'Não foi possível realizar o login. Por favor, verifique suas credenciais e tente novamente.',
-    )
+      return error
+    }
   }
 }
+
+export default SignInService

@@ -16,10 +16,14 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
+import SignInService, {
+  InterfaceSignInResponse,
+} from '@/services/firebase/auth/sign-in'
 
 import { signInSchema } from './sign-in-schema'
 
 export function SignInForm() {
+  const signInService = new SignInService()
   const form = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -30,6 +34,11 @@ export function SignInForm() {
 
   async function onSubmit(values: z.infer<typeof signInSchema>) {
     console.log(values)
+    await signInService.signIn(values).then(async (res) => {
+      const { token, uid, emailVerified } = res as InterfaceSignInResponse
+
+      console.log('Pedir para verificar o email!', emailVerified)
+    })
   }
 
   return (
