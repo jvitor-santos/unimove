@@ -1,18 +1,6 @@
-<div align="left">
-  <img src="https://img.shields.io/static/v1?label=Progress&message=50%&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Progress"/>
-</div>
-
-<br/>
-
 <div align="center">
   <h1>UniMove</h1>
-  <h3>Uma aplicação web responsiva desenvolvida com <a href="https://nextjs.org/">NextJS</a>, integrando-se ao Firebase. Neste aplicativo, é possível visualizar publicações de atividades acadêmicas, visualizar comentários e respostas.</p>
-</div>
-  <img src="https://img.shields.io/static/v1?label=NextJS&message=14.1.0&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Versão do NextJS" />
-  <img src="https://img.shields.io/static/v1?label=Typescript&message=5.0.0&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Versão do Typescript" />
-  <img src="https://img.shields.io/static/v1?label=TailwindCSS&message=3.3.0&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Versão do TailwindCSS" />
-  <img src="https://img.shields.io/static/v1?label=Jest&message=29.7.0&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Versão do Jest" />
-  <img src="https://img.shields.io/static/v1?label=Testing%20Library&message=14.2.1&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Versão do Testing Library" />
+  <h3>Uma aplicação web responsiva desenvolvida com <a href="https://nextjs.org/">NextJS</a>, integrando-se ao Firebase. Um sistema para gerenciar grupo e rotas de vans escolares.</p>
 </div>
 
 <br/>
@@ -27,7 +15,7 @@
 <br/>
 
 <div>
-  <h3>Demo Frontend: <a href="https://unimove-5bjx8u6sz-jvitorsantos-projects.vercel.app/">https://unimove-5bjx8u6sz-jvitorsantos-projects.vercel.app/</a></h3>
+  <h3>Demo Frontend: <a href="https://unimove.vercel.app/">https://unimove.vercel.app/</a></h3>
 </div>
 
 <div>
