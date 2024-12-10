@@ -1,12 +1,6 @@
-<div align="left">
-  <img src="https://img.shields.io/static/v1?label=Progress&message=50%&color=#009CA3%3CCOLOR%3E&style=plastic%3CSTYLE%3E&logo=react%3CLOGO%3E" alt="Progress"/>
-</div>
-
-<br/>
-
 <div align="center">
   <h1>UniMove</h1>
-  <h3>Uma aplicação web responsiva desenvolvida com <a href="https://nextjs.org/">NextJS</a>, integrando-se ao Firebase. Neste aplicativo, é possível visualizar publicações de atividades acadêmicas, visualizar comentários e respostas.</p>
+  <h3>Uma aplicação web responsiva desenvolvida com <a href="https://nextjs.org/">NextJS</a>, integrando-se ao Firebase. Um sistema para gerenciar grupo e rotas de vans escolares.</p>
 <br/>
 
 <div align="center">
